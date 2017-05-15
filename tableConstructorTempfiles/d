@@ -1,0 +1,274 @@
+USE bgg;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` ( id int primary key auto_increment,
+Name text,
+`mActing` float,
+`mActing Count` int,
+`mAction / Movement Programming` float,
+`mAction / Movement Programming Count` int,
+`mAction Point Allowance System` float,
+`mAction Point Allowance System Count` int,
+`mArea Control / Area Influence` float,
+`mArea Control / Area Influence Count` int,
+`mArea Enclosure` float,
+`mArea Enclosure Count` int,
+`mArea Movement` float,
+`mArea Movement Count` int,
+`mArea-Impulse` float,
+`mArea-Impulse Count` int,
+`mAuction/Bidding` float,
+`mAuction/Bidding Count` int,
+`mBetting/Wagering` float,
+`mBetting/Wagering Count` int,
+`mCampaign / Battle Card Driven` float,
+`mCampaign / Battle Card Driven Count` int,
+`mCard Drafting` float,
+`mCard Drafting Count` int,
+`mChit-Pull System` float,
+`mChit-Pull System Count` int,
+`mCo-operative Play` float,
+`mCo-operative Play Count` int,
+`mCommodity Speculation` float,
+`mCommodity Speculation Count` int,
+`mCrayon Rail System` float,
+`mCrayon Rail System Count` int,
+`mDeck / Pool Building` float,
+`mDeck / Pool Building Count` int,
+`mDice Rolling` float,
+`mDice Rolling Count` int,
+`mGrid Movement` float,
+`mGrid Movement Count` int,
+`mHand Management` float,
+`mHand Management Count` int,
+`mHex-and-Counter` float,
+`mHex-and-Counter Count` int,
+`mLine Drawing` float,
+`mLine Drawing Count` int,
+`mMemory` float,
+`mMemory Count` int,
+`mModular Board` float,
+`mModular Board Count` int,
+`mPaper-and-Pencil` float,
+`mPaper-and-Pencil Count` int,
+`mPartnerships` float,
+`mPartnerships Count` int,
+`mPattern Building` float,
+`mPattern Building Count` int,
+`mPattern Recognition` float,
+`mPattern Recognition Count` int,
+`mPick-up and Deliver` float,
+`mPick-up and Deliver Count` int,
+`mPlayer Elimination` float,
+`mPlayer Elimination Count` int,
+`mPoint to Point Movement` float,
+`mPoint to Point Movement Count` int,
+`mPress Your Luck` float,
+`mPress Your Luck Count` int,
+`mRock-Paper-Scissors` float,
+`mRock-Paper-Scissors Count` int,
+`mRole Playing` float,
+`mRole Playing Count` int,
+`mRoll / Spin and Move` float,
+`mRoll / Spin and Move Count` int,
+`mRoute/Network Building` float,
+`mRoute/Network Building Count` int,
+`mSecret Unit Deployment` float,
+`mSecret Unit Deployment Count` int,
+`mSet Collection` float,
+`mSet Collection Count` int,
+`mSimulation` float,
+`mSimulation Count` int,
+`mSimultaneous Action Selection` float,
+`mSimultaneous Action Selection Count` int,
+`mSinging` float,
+`mSinging Count` int,
+`mStock Holding` float,
+`mStock Holding Count` int,
+`mStorytelling` float,
+`mStorytelling Count` int,
+`mTake That` float,
+`mTake That Count` int,
+`mTile Placement` float,
+`mTile Placement Count` int,
+`mTime Track` float,
+`mTime Track Count` int,
+`mTrading` float,
+`mTrading Count` int,
+`mTrick-taking` float,
+`mTrick-taking Count` int,
+`mVariable Phase Order` float,
+`mVariable Phase Order Count` int,
+`mVariable Player Powers` float,
+`mVariable Player Powers Count` int,
+`mVoting` float,
+`mVoting Count` int,
+`mWorker Placement` float,
+`mWorker Placement Count` int);
+ALTER TABLE users ADD COLUMN `cAbstract Strategy` float;
+ALTER TABLE users ADD COLUMN `cAbstract Strategy Count` int;
+ALTER TABLE users ADD COLUMN `cAction / Dexterity` float;
+ALTER TABLE users ADD COLUMN `cAction / Dexterity Count` int;
+ALTER TABLE users ADD COLUMN `cAdventure` float;
+ALTER TABLE users ADD COLUMN `cAdventure Count` int;
+ALTER TABLE users ADD COLUMN `cAge of Reason` float;
+ALTER TABLE users ADD COLUMN `cAge of Reason Count` int;
+ALTER TABLE users ADD COLUMN `cAmerican Civil War` float;
+ALTER TABLE users ADD COLUMN `cAmerican Civil War Count` int;
+ALTER TABLE users ADD COLUMN `cAmerican Indian Wars` float;
+ALTER TABLE users ADD COLUMN `cAmerican Indian Wars Count` int;
+ALTER TABLE users ADD COLUMN `cAmerican Revolutionary War` float;
+ALTER TABLE users ADD COLUMN `cAmerican Revolutionary War Count` int;
+ALTER TABLE users ADD COLUMN `cAmerican West` float;
+ALTER TABLE users ADD COLUMN `cAmerican West Count` int;
+ALTER TABLE users ADD COLUMN `cAncient` float;
+ALTER TABLE users ADD COLUMN `cAncient Count` int;
+ALTER TABLE users ADD COLUMN `cAnimals` float;
+ALTER TABLE users ADD COLUMN `cAnimals Count` int;
+ALTER TABLE users ADD COLUMN `cArabian` float;
+ALTER TABLE users ADD COLUMN `cArabian Count` int;
+ALTER TABLE users ADD COLUMN `cAviation / Flight` float;
+ALTER TABLE users ADD COLUMN `cAviation / Flight Count` int;
+ALTER TABLE users ADD COLUMN `cBluffing` float;
+ALTER TABLE users ADD COLUMN `cBluffing Count` int;
+ALTER TABLE users ADD COLUMN `cBook` float;
+ALTER TABLE users ADD COLUMN `cBook Count` int;
+ALTER TABLE users ADD COLUMN `cCard Game` float;
+ALTER TABLE users ADD COLUMN `cCard Game Count` int;
+ALTER TABLE users ADD COLUMN `cChildren's Game` float;
+ALTER TABLE users ADD COLUMN `cChildren's Game Count` int;
+ALTER TABLE users ADD COLUMN `cCity Building` float;
+ALTER TABLE users ADD COLUMN `cCity Building Count` int;
+ALTER TABLE users ADD COLUMN `cCivil War` float;
+ALTER TABLE users ADD COLUMN `cCivil War Count` int;
+ALTER TABLE users ADD COLUMN `cCivilization` float;
+ALTER TABLE users ADD COLUMN `cCivilization Count` int;
+ALTER TABLE users ADD COLUMN `cCollectible Components` float;
+ALTER TABLE users ADD COLUMN `cCollectible Components Count` int;
+ALTER TABLE users ADD COLUMN `cComic Book / Strip` float;
+ALTER TABLE users ADD COLUMN `cComic Book / Strip Count` int;
+ALTER TABLE users ADD COLUMN `cDeduction` float;
+ALTER TABLE users ADD COLUMN `cDeduction Count` int;
+ALTER TABLE users ADD COLUMN `cDice` float;
+ALTER TABLE users ADD COLUMN `cDice Count` int;
+ALTER TABLE users ADD COLUMN `cEconomic` float;
+ALTER TABLE users ADD COLUMN `cEconomic Count` int;
+ALTER TABLE users ADD COLUMN `cEducational` float;
+ALTER TABLE users ADD COLUMN `cEducational Count` int;
+ALTER TABLE users ADD COLUMN `cElectronic` float;
+ALTER TABLE users ADD COLUMN `cElectronic Count` int;
+ALTER TABLE users ADD COLUMN `cEnvironmental` float;
+ALTER TABLE users ADD COLUMN `cEnvironmental Count` int;
+ALTER TABLE users ADD COLUMN `cExpansion for Base-game` float;
+ALTER TABLE users ADD COLUMN `cExpansion for Base-game Count` int;
+ALTER TABLE users ADD COLUMN `cExploration` float;
+ALTER TABLE users ADD COLUMN `cExploration Count` int;
+ALTER TABLE users ADD COLUMN `cFan Expansion` float;
+ALTER TABLE users ADD COLUMN `cFan Expansion Count` int;
+ALTER TABLE users ADD COLUMN `cFantasy` float;
+ALTER TABLE users ADD COLUMN `cFantasy Count` int;
+ALTER TABLE users ADD COLUMN `cFarming` float;
+ALTER TABLE users ADD COLUMN `cFarming Count` int;
+ALTER TABLE users ADD COLUMN `cFighting` float;
+ALTER TABLE users ADD COLUMN `cFighting Count` int;
+ALTER TABLE users ADD COLUMN `cGame System` float;
+ALTER TABLE users ADD COLUMN `cGame System Count` int;
+ALTER TABLE users ADD COLUMN `cHorror` float;
+ALTER TABLE users ADD COLUMN `cHorror Count` int;
+ALTER TABLE users ADD COLUMN `cHumor` float;
+ALTER TABLE users ADD COLUMN `cHumor Count` int;
+ALTER TABLE users ADD COLUMN `cIndustry / Manufacturing` float;
+ALTER TABLE users ADD COLUMN `cIndustry / Manufacturing Count` int;
+ALTER TABLE users ADD COLUMN `cKorean War` float;
+ALTER TABLE users ADD COLUMN `cKorean War Count` int;
+ALTER TABLE users ADD COLUMN `cMafia` float;
+ALTER TABLE users ADD COLUMN `cMafia Count` int;
+ALTER TABLE users ADD COLUMN `cMath` float;
+ALTER TABLE users ADD COLUMN `cMath Count` int;
+ALTER TABLE users ADD COLUMN `cMature / Adult` float;
+ALTER TABLE users ADD COLUMN `cMature / Adult Count` int;
+ALTER TABLE users ADD COLUMN `cMaze` float;
+ALTER TABLE users ADD COLUMN `cMaze Count` int;
+ALTER TABLE users ADD COLUMN `cMedical` float;
+ALTER TABLE users ADD COLUMN `cMedical Count` int;
+ALTER TABLE users ADD COLUMN `cMedieval` float;
+ALTER TABLE users ADD COLUMN `cMedieval Count` int;
+ALTER TABLE users ADD COLUMN `cMemory` float;
+ALTER TABLE users ADD COLUMN `cMemory Count` int;
+ALTER TABLE users ADD COLUMN `cMiniatures` float;
+ALTER TABLE users ADD COLUMN `cMiniatures Count` int;
+ALTER TABLE users ADD COLUMN `cModern Warfare` float;
+ALTER TABLE users ADD COLUMN `cModern Warfare Count` int;
+ALTER TABLE users ADD COLUMN `cMovies / TV / Radio theme` float;
+ALTER TABLE users ADD COLUMN `cMovies / TV / Radio theme Count` int;
+ALTER TABLE users ADD COLUMN `cMurder/Mystery` float;
+ALTER TABLE users ADD COLUMN `cMurder/Mystery Count` int;
+ALTER TABLE users ADD COLUMN `cMusic` float;
+ALTER TABLE users ADD COLUMN `cMusic Count` int;
+ALTER TABLE users ADD COLUMN `cMythology` float;
+ALTER TABLE users ADD COLUMN `cMythology Count` int;
+ALTER TABLE users ADD COLUMN `cNapoleonic` float;
+ALTER TABLE users ADD COLUMN `cNapoleonic Count` int;
+ALTER TABLE users ADD COLUMN `cNautical` float;
+ALTER TABLE users ADD COLUMN `cNautical Count` int;
+ALTER TABLE users ADD COLUMN `cNegotiation` float;
+ALTER TABLE users ADD COLUMN `cNegotiation Count` int;
+ALTER TABLE users ADD COLUMN `cNovel-based` float;
+ALTER TABLE users ADD COLUMN `cNovel-based Count` int;
+ALTER TABLE users ADD COLUMN `cNumber` float;
+ALTER TABLE users ADD COLUMN `cNumber Count` int;
+ALTER TABLE users ADD COLUMN `cParty Game` float;
+ALTER TABLE users ADD COLUMN `cParty Game Count` int;
+ALTER TABLE users ADD COLUMN `cPike and Shot` float;
+ALTER TABLE users ADD COLUMN `cPike and Shot Count` int;
+ALTER TABLE users ADD COLUMN `cPirates` float;
+ALTER TABLE users ADD COLUMN `cPirates Count` int;
+ALTER TABLE users ADD COLUMN `cPolitical` float;
+ALTER TABLE users ADD COLUMN `cPolitical Count` int;
+ALTER TABLE users ADD COLUMN `cPost-Napoleonic` float;
+ALTER TABLE users ADD COLUMN `cPost-Napoleonic Count` int;
+ALTER TABLE users ADD COLUMN `cPrehistoric` float;
+ALTER TABLE users ADD COLUMN `cPrehistoric Count` int;
+ALTER TABLE users ADD COLUMN `cPrint & Play` float;
+ALTER TABLE users ADD COLUMN `cPrint & Play Count` int;
+ALTER TABLE users ADD COLUMN `cPuzzle` float;
+ALTER TABLE users ADD COLUMN `cPuzzle Count` int;
+ALTER TABLE users ADD COLUMN `cRacing` float;
+ALTER TABLE users ADD COLUMN `cRacing Count` int;
+ALTER TABLE users ADD COLUMN `cReal-time` float;
+ALTER TABLE users ADD COLUMN `cReal-time Count` int;
+ALTER TABLE users ADD COLUMN `cReligious` float;
+ALTER TABLE users ADD COLUMN `cReligious Count` int;
+ALTER TABLE users ADD COLUMN `cRenaissance` float;
+ALTER TABLE users ADD COLUMN `cRenaissance Count` int;
+ALTER TABLE users ADD COLUMN `cScience Fiction` float;
+ALTER TABLE users ADD COLUMN `cScience Fiction Count` int;
+ALTER TABLE users ADD COLUMN `cSpace Exploration` float;
+ALTER TABLE users ADD COLUMN `cSpace Exploration Count` int;
+ALTER TABLE users ADD COLUMN `cSpies/Secret Agents` float;
+ALTER TABLE users ADD COLUMN `cSpies/Secret Agents Count` int;
+ALTER TABLE users ADD COLUMN `cSports` float;
+ALTER TABLE users ADD COLUMN `cSports Count` int;
+ALTER TABLE users ADD COLUMN `cTerritory Building` float;
+ALTER TABLE users ADD COLUMN `cTerritory Building Count` int;
+ALTER TABLE users ADD COLUMN `cTrains` float;
+ALTER TABLE users ADD COLUMN `cTrains Count` int;
+ALTER TABLE users ADD COLUMN `cTransportation` float;
+ALTER TABLE users ADD COLUMN `cTransportation Count` int;
+ALTER TABLE users ADD COLUMN `cTravel` float;
+ALTER TABLE users ADD COLUMN `cTravel Count` int;
+ALTER TABLE users ADD COLUMN `cTrivia` float;
+ALTER TABLE users ADD COLUMN `cTrivia Count` int;
+ALTER TABLE users ADD COLUMN `cVideo Game Theme` float;
+ALTER TABLE users ADD COLUMN `cVideo Game Theme Count` int;
+ALTER TABLE users ADD COLUMN `cVietnam War` float;
+ALTER TABLE users ADD COLUMN `cVietnam War Count` int;
+ALTER TABLE users ADD COLUMN `cWargame` float;
+ALTER TABLE users ADD COLUMN `cWargame Count` int;
+ALTER TABLE users ADD COLUMN `cWord Game` float;
+ALTER TABLE users ADD COLUMN `cWord Game Count` int;
+ALTER TABLE users ADD COLUMN `cWorld War I` float;
+ALTER TABLE users ADD COLUMN `cWorld War I Count` int;
+ALTER TABLE users ADD COLUMN `cWorld War II` float;
+ALTER TABLE users ADD COLUMN `cWorld War II Count` int;
+ALTER TABLE users ADD COLUMN `cZombies` float;
+ALTER TABLE users ADD COLUMN `cZombies Count` int;
