@@ -1,5 +1,7 @@
 <?php
   require("lib_mysqlConnect.php");
+  
+  // nuke tables
 
 	// for each rating
 
@@ -7,11 +9,11 @@
 
 	// check rating of game
 
-	// load xml of game
-
-	// get mechanics of game
-
-	// get categories of game
+	// load game stats
+	
+	// iterate each game tag
+	
+	// store the info per tag
 
 	// figure out new vector for user
 
