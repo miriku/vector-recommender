@@ -60,5 +60,6 @@
       }
     }
     $count++;
-    print "\r$count/11133474";
+    $percent = $count * 100 / 11133474;
+    print "\r$count/11133474 $percent%";
   }
