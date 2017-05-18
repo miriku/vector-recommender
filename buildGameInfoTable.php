@@ -21,7 +21,7 @@
          !preg_match("/boardgamemechanic/", $xml_line))
         continue;
 
-      if(preg_match("/boardgamecategory/", $xml_line)
+      if(preg_match("/boardgamecategory/", $xml_line))
         $prefix="c";
       else
         $prefix="m";
