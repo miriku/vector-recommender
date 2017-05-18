@@ -30,6 +30,9 @@
       $q5->execute();
       $row5=$q5->fetch();
 
+			$queryBits=0;
+			$queryBit="";
+
       foreach($tags as $tag)
       {
         if(""==$tag) continue;
@@ -39,12 +42,19 @@
         $newCount = $oldCount+1;
         $newVal = (($oldVal*$oldCount + $rating)/$newCount);
 
+				if(0==$queryBits) $queryBit .= ", ";
+				else $queryBits=1;
+
         // figure out magnitude of component of new vector for user
-        $q6 = $dbh_bgg->prepare("UPDATE users SET `$tag`='$newVal', `$tag Count`='$newCount' WHERE Name=\"$username\"");
-        $q6->execute();
+        $queryBit .= "`$tag`='$newVal', `$tag Count`='$newCount'"; 
       }
+
+			$query = "UPDATE users SET " . $queryBit .  " WHERE Name=\"$username\"";
+			$q6 = $dbh_bgg->prepare($query);
+			$q6->execute();
     }
     $count++;
+		if($count==1000) die;
     $percent = $count * 100 / 11133474;
     print "\r$count/11133474 $percent%";
   }
