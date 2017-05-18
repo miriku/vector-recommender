@@ -21,9 +21,14 @@
          !preg_match("/boardgamemechanic/", $xml_line))
         continue;
 
+      if(preg_match("/boardgamecategory/", $xml_line)
+        $prefix="c";
+      else
+        $prefix="m";
+
       $value = preg_replace("/.*value=\\\"(.*?)\\\".*/", '$1', $xml_line);
 
-      $running_string .= $value . "||";
+      $running_string .= $prefix . $value . "||";
     }
     // save as string (maybe redo as bools if slow)
     $q2 = $dbh_bgg->prepare("UPDATE games SET string='$running_string' WHERE id=$id");
