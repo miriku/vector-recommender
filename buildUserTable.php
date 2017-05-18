@@ -2,10 +2,6 @@
   $dbh_bgg;
   require("lib_mysqlConnect.php");
 
-  // nuke tables
-  $q = $dbh_bgg->prepare("DELETE FROM users");
-  $q->execute();
-
   $count = 0;
 
 	// for each rating
@@ -16,20 +12,9 @@
 
     while($row=$q->fetch())
     {
-      // create user if not exist
       $username = $row['username'];
       $game = $row['game'];
       $rating = $row['rating'];
-
-      $q2 = $dbh_bgg->prepare("SELECT COUNT(*) AS exist FROM users WHERE Name='$username'");
-      $q2->execute();
-      $row2=$q2->fetch();
-
-      if($row2['exist']==0)
-      {
-        $q3 = $dbh_bgg->prepare("INSERT INTO users(`Name`) VALUES('$username')");
-        $q3->execute();
-      }
 
       // load game stats
       $q4 = $dbh_bgg->prepare("SELECT string FROM games WHERE id='$game'");
