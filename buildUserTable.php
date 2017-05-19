@@ -3,6 +3,20 @@
   require("lib_mysqlConnect.php");
 
   $count = 0;
+  $totalUsers = 0;
+  $user;
+
+	$q5 = $dbh_bgg->prepare("SELECT Name FROM users");
+	$q5->execute();
+	while($row5=$q5->fetch())
+	{
+    $totalUsers++;
+    $name = $row5['Name'];
+    $user["$name"]['name']=$name;
+    require("variableSet.php");
+	}
+
+  print "Vectorizing\n";
 
 	// for each rating
   for($i=0; $i<11133474; $i++)
@@ -26,35 +40,56 @@
       // iterate each game tag
       $tags = explode("||", $string);
 
-      $q5 = $dbh_bgg->prepare("SELECT * FROM users WHERE Name=\"$username\"");
-      $q5->execute();
-      $row5=$q5->fetch();
-
 			$queryBits=0;
 			$queryBit="";
 
       foreach($tags as $tag)
       {
-        if(""==$tag) continue;
+				if(""==$tag) { continue; }
+        $oldVal;
+        $oldCount;
 
-        $oldVal = $row5["$tag"];
-        $oldCount = $row5["$tag Count"];
+				$oldVal = $user["$username"]["$tag"];
+				$oldCount = $user["$username"]["$tag Count"];
+
         $newCount = $oldCount+1;
         $newVal = (($oldVal*$oldCount + $rating)/$newCount);
 
-				if(0==$queryBits) $queryBit .= ", ";
-				else $queryBits=1;
-
-        // figure out magnitude of component of new vector for user
-        $queryBit .= "`$tag`='$newVal', `$tag Count`='$newCount'"; 
-      }
-
-			$query = "UPDATE users SET " . $queryBit .  " WHERE Name=\"$username\"";
-			$q6 = $dbh_bgg->prepare($query);
-			$q6->execute();
+				$user[$username]["$tag"]=$newVal;
+				$user[$username]["$tag Count"]=$newCount;
+			}
     }
     $count++;
-		if($count==1000) die;
     $percent = $count * 100 / 11133474;
-    print "\r$count/11133474 $percent%";
+    print "\r$count/11133475 $percent%";
   }
+	print "\nDone! Now storing\n";
+	$count = 0;
+	foreach($user as $u)
+	{
+		$queryBit = "";
+		$queryBits = 0;
+		$query = "";
+
+		foreach($u as $key=>$val)
+		{
+			if($key == "name")
+      {
+        $name=$val;
+        continue;
+      }
+
+			if($queryBits) $queryBit = ", ";
+				else $queryBits=1;
+
+			$query .= $queryBit . "`$key` = '$val'";
+		}
+
+		$query = "UPDATE users SET " . $query . " WHERE Name='$name'";
+
+		$q7=$dbh_bgg->prepare($query);
+		$q7->execute();
+		$count++;
+		$percent = $count * 100 / $totalUsers;
+		print "\r$count/$totalUsers, $percent%";
+	}
