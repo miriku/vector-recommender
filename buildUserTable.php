@@ -53,7 +53,7 @@
         $oldCount;
 
         // abort on bad data
-        if(!array_key_exists($user["$username"]["$tag"])) 
+        if(!array_key_exists("$tag",$user["$username"])) 
 				{
 					$errors++;
 					continue;
