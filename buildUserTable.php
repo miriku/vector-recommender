@@ -5,6 +5,9 @@
   $count = 0;
   $totalUsers = 0;
   $user;
+	$errors = 0;
+
+  print "building user table. this will take 5gb of ram and 120s\n";
 
 	$q5 = $dbh_bgg->prepare("SELECT Name FROM users");
 	$q5->execute();
@@ -48,6 +51,13 @@
 				if(""==$tag) { continue; }
         $oldVal;
         $oldCount;
+
+        // abort on bad data
+        if(!array_key_exists($user["$username"]["$tag"])) 
+				{
+					$errors++;
+					continue;
+				}
 
 				$oldVal = $user["$username"]["$tag"];
 				$oldCount = $user["$username"]["$tag Count"];
@@ -93,3 +103,4 @@
 		$percent = $count * 100 / $totalUsers;
 		print "\r$count/$totalUsers, $percent%";
 	}
+	print "\nDone. Final error count: $errors\n";
