@@ -18,10 +18,10 @@
 
   print "Vectorizing\n";
 
-	// for each rating
-  for($i=0; $i<11133474; $i++)
+	// for each rating table (of 1000)
+  for($i=0; $i<1000; $i++)
   {
-    $q = $dbh_bgg->prepare("SELECT username, game, rating FROM ratings LIMIT $i, 1");
+    $q = $dbh_bgg->prepare("SELECT username, game, rating FROM rat$i");
     $q->execute();
 
     while($row=$q->fetch())
@@ -60,8 +60,8 @@
 			}
     }
     $count++;
-    $percent = $count * 100 / 11133474;
-    print "\r$count/11133475 $percent%";
+    $percent = $count * 100 / 1000;
+    print "\r$count/1000 $percent%";
   }
 	print "\nDone! Now storing\n";
 	$count = 0;
