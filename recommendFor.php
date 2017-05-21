@@ -205,3 +205,16 @@
     $gameRow = $qGame->fetch();
     print "$count. " . $gameRow['name'] . "\n";
   }
+  print "Your furthest buddy was " . $furthest[0]['name'] . " who is " . $furthest[0]['distance'] . " away.\n";
+  print "Their top games were:\n";
+  $qFavs = $dbh_bgg->prepare("SELECT * FROM ratings WHERE username='" . $furthest[0]['name'] . "' ORDER BY rating DESC LIMIT 10");
+  $qFavs->execute();
+  $count = 0;
+  while($row = $qFavs->fetch())
+  {
+    $count++;
+    $qGame = $dbh_bgg->prepare("SELECT name FROM games WHERE id=" . $row['game']);
+    $qGame->execute();
+    $gameRow = $qGame->fetch();
+    print "$count. " . $gameRow['name'] . "\n";
+  }
