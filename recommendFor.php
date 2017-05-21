@@ -95,12 +95,15 @@
 	$qSelf->execute();
 
   $closest = array();
+  $furthest = array();
   $closest[0]["name"] = "";
   $closest[0]["distance"] = 99999;
   $closest[1]["name"] = "";
   $closest[1]["distance"] = 99999;
   $closest[2]["name"] = "";
   $closest[2]["distance"] = 99999;
+  $furthest[0]["name"] = "";
+  $furthest[0]["distance"] = 0;
   $count = 0;
 
 	while($row=$qSelf->fetch())
@@ -142,6 +145,11 @@
       $closest[2]['name'] = $row['Name'];
       $closest[2]['distance'] = $distance;
     }
+    elseif($distance > $furthest[0]['name'])
+    {
+      $furthest[0]['name'] = $row['Name'];
+      $furthest[0]['distance'] = $distance;
+    }
 
     $count++;
     print "\r$count/207359";
@@ -173,3 +181,27 @@
   }
 
   print "Your next two closest buddies are " . $closest[1]['name'] . " at " . $closest[1]['distance'] . " and " . $closest[2]['name'] . " at " . $closest[2]['distance'] . ".\n";
+  print "Their top 10s are:\n";
+  $qFavs = $dbh_bgg->prepare("SELECT * FROM ratings WHERE username='" . $closest[1]['name'] . "' ORDER BY rating DESC LIMIT 10");
+  $qFavs->execute();
+  $count = 0;
+  while($row = $qFavs->fetch())
+  {
+    $count++;
+    $qGame = $dbh_bgg->prepare("SELECT name FROM games WHERE id=" . $row['game']);
+    $qGame->execute();
+    $gameRow = $qGame->fetch();
+    print "$count. " . $gameRow['name'] . "\n";
+  }
+  print "and\n";
+  $qFavs = $dbh_bgg->prepare("SELECT * FROM ratings WHERE username='" . $closest[2]['name'] . "' ORDER BY rating DESC LIMIT 10");
+  $qFavs->execute();
+  $count = 0;
+  while($row = $qFavs->fetch())
+  {
+    $count++;
+    $qGame = $dbh_bgg->prepare("SELECT name FROM games WHERE id=" . $row['game']);
+    $qGame->execute();
+    $gameRow = $qGame->fetch();
+    print "$count. " . $gameRow['name'] . "\n";
+  }
