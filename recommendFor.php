@@ -109,6 +109,9 @@
 
       if(preg_match("/Count$/", $key)) continue;
 
+      // skip yourself
+      if($row['Name'] == $user) { continue; }
+
       $distanceTuple = ($val - $user['self'][$key]) * ($val - $user['self'][$key]);
       $runningDistance += $distanceTuple;
     }
