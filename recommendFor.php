@@ -95,13 +95,21 @@
 	$qSelf->execute();
 
   $closest = array();
-  $closest["name"] = "";
-  $closest["distance"] = 99999;
+  $closest[0]["name"] = "";
+  $closest[0]["distance"] = 99999;
+  $closest[1]["name"] = "";
+  $closest[1]["distance"] = 99999;
+  $closest[2]["name"] = "";
+  $closest[2]["distance"] = 99999;
   $count = 0;
 
 	while($row=$qSelf->fetch())
   {
     $runningDistance = 0;
+
+    // skip yourself
+    if($row['Name'] == $name) { continue; }
+
     foreach($row as $key=>$val)
     {
       if(!(preg_match("/^c/", $key) ||
@@ -109,17 +117,30 @@
 
       if(preg_match("/Count$/", $key)) continue;
 
-      // skip yourself
-      if($row['Name'] == $user) { continue; }
-
       $distanceTuple = ($val - $user['self'][$key]) * ($val - $user['self'][$key]);
       $runningDistance += $distanceTuple;
     }
     $distance = sqrt($runningDistance);
-    if($distance < $closest['distance'])
+    if($distance < $closest[0]['distance'])
     {
-      $closest['name'] = $row['Name'];
-      $closest['distance'] = $distance;
+      $closest[2]['name'] = $closest[1]['name'];
+      $closest[2]['distance'] = $closest[1]['distance'];
+      $closest[1]['name'] = $closest[0]['name'];
+      $closest[1]['distance'] = $closest[0]['distance'];
+      $closest[0]['name'] = $row['Name'];
+      $closest[0]['distance'] = $distance;
+    }
+    elseif($distance < $closest[1]['distance'])
+    {
+      $closest[2]['name'] = $closest[1]['name'];
+      $closest[2]['distance'] = $closest[1]['distance'];
+      $closest[1]['name'] = $row['Name'];
+      $closest[1]['distance'] = $distance;
+    }
+    elseif($distance < $closest[2]['distance'])
+    {
+      $closest[2]['name'] = $row['Name'];
+      $closest[2]['distance'] = $distance;
     }
 
     $count++;
@@ -136,10 +157,10 @@
   print $top3Mechanic[1]["key"] . " at " . $top3Mechanic[1]["value"] . ", and ";
   print $top3Mechanic[2]["key"] . " at " . $top3Mechanic[2]["value"] . ". \n";
 
-  print "Your best buddy is " . $closest['name'] . ".\n";
+  print "Your best buddy is " . $closest[0]['name'] . " who is " . $closest[0]['distance'] . " away.\n";
 
   print "Their favorite games are: \n";
-  $qFavs = $dbh_bgg->prepare("SELECT * FROM ratings WHERE username='" . $closest['name'] . "' ORDER BY rating DESC LIMIT 30");
+  $qFavs = $dbh_bgg->prepare("SELECT * FROM ratings WHERE username='" . $closest[0]['name'] . "' ORDER BY rating DESC LIMIT 30");
   $qFavs->execute();
   $count = 0;
   while($row = $qFavs->fetch())
@@ -150,3 +171,5 @@
     $gameRow = $qGame->fetch();
     print "$count. " . $gameRow['name'] . "\n";
   }
+
+  print "Your next two closest buddies are " . $closest[1]['name'] . " at " . $closest[1]['distance'] . " and " . $closest[2]['name'] . " at " . $closest[2]['distance'] . ".\n";
